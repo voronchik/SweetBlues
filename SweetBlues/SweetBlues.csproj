@@ -59,6 +59,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MenuCoffeeDrinks\MenuCoffee.cs" />
+    <Compile Include="MenuCoffeeDrinks\OrderCoffeeDrinks\OrderEspreso.cs" />
+    <Compile Include="MenuDrinks.cs" />
     <Compile Include="MenuModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,6 +69,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MenuCoctailDrinks\" />
+    <Folder Include="MenuLemonadDrinks\" />
+    <Folder Include="MenuTeaDrinks\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
