@@ -17,7 +17,7 @@ namespace SweetBlues
 				new InlineKeyboardButton[]{
 					new InlineKeyboardButton("Замовити Еспресо")
 					{
-						CallbackData = "zamovytyEspreso"
+						CallbackData = "eba4f9c9-0273-4035-9217-c743491a04c8" //guid - тестовий
 					},
 					new InlineKeyboardButton("Повернутися до кавових напоїв")
 					{

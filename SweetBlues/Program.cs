@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SweetBlues.DataBase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,6 +40,8 @@ namespace SweetBlues
 			//вхід в головне меню
 			if (mess == "/start")
 			{
+				DataBaseMoq.AppendUser(message);
+
 				await SweetBlues.SendTextMessageAsync(message.Chat.Id, "Радий Вас вітати у нашій кав'ярні!",
 					replyMarkup: MenuModel.GetMainMenu());
 			}
@@ -119,10 +122,32 @@ namespace SweetBlues
 				await SweetBlues.SendTextMessageAsync(message.Chat.Id, "Вітаю, Ви у меню Мій профіль.",
 					replyMarkup: MenuModel.GetMyProfileMenu());
 			}
+
+			//-------------------------------------------------------------------------------------------------------------------------
+			//тестування кошику
+			else if (mess == "кошик")
+			{
+				await SweetBlues.ShowBasket(message);
+			}
+
+
+
+			//-------------------------------------------------------------------------------------------------------------------------
+			//тестування відправки розсилки			
+			else if (mess == "відправити усім")
+			{
+				await SweetBlues.SendMessageAllUsers("-> " + DateTime.Now);
+			}
+
 			else
 			{
 				await SweetBlues.SendTextMessageAsync(message.Chat.Id, "Чудово, а що значить " + mess + "?");
 			}
+
+			
+
+
+
 		}
 
 		static async Task GetCallBack(CallbackQuery query)
@@ -148,6 +173,10 @@ namespace SweetBlues
 			{
 				await SweetBlues.SendPhotoAsync(query.From.Id, "https://media.discordapp.net/attachments/1008571061119483984/1079362010313130064/Aleksandr_V._cafe_drinks_coffee_tea_lemonad_milk_cocktail_colla_6a1ffaae-fe24-474d-b01c-ebfebd9efb85.png?width=683&height=683",
 					replyMarkup: MenuDrinks.GetMenuDrinks());
+			}
+			else
+			{
+				await SweetBlues.AppendProductToBasket(query);
 			}
 
 
